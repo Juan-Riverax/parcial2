@@ -21,7 +21,7 @@ public class VideogameDAO {
             PreparedStatement sc = conn.prepareStatement(show_catalog);
             ResultSet rs = sc.executeQuery()){
             while(rs.next()){
-                Videogame v = new Videogame(rs.getInt("id"),rs.getString("name"),rs.getString("genero"),rs.getDouble("precio"),rs.getInt("unidades"));
+                Videogame v = new Videogame(rs.getInt("id"),rs.getString("name"),rs.getString("genero"),rs.getDouble("precio"),rs.getInt("unidades"),rs.getInt("id_desarrollador"));
                 catalog.add(v);
             }
         }
@@ -40,7 +40,7 @@ public class VideogameDAO {
             sn.setString(1,"%"+s+"%");
             ResultSet rs = sn.executeQuery();
             while(rs.next()){
-                Videogame v = new Videogame(rs.getInt("id"),rs.getString("name"),rs.getString("genero"),rs.getDouble("precio"),rs.getInt("unidades"));
+                Videogame v = new Videogame(rs.getInt("id"),rs.getString("name"),rs.getString("genero"),rs.getDouble("precio"),rs.getInt("unidades"),rs.getInt("id_desarrollador"));
                 name.add(v);
             }
             if(name.isEmpty()) {
@@ -63,7 +63,7 @@ public class VideogameDAO {
             sg.setString(1,"%"+s+"%");
             ResultSet rs = sg.executeQuery();
             while(rs.next()){
-                Videogame v = new Videogame(rs.getInt("id"),rs.getString("name"),rs.getString("genero"),rs.getDouble("precio"),rs.getInt("unidades"));
+                Videogame v = new Videogame(rs.getInt("id"),rs.getString("name"),rs.getString("genero"),rs.getDouble("precio"),rs.getInt("unidades"),rs.getInt("id_desarrollador"));
                 genero.add(v);
             }
             if (genero.isEmpty()){
@@ -85,7 +85,7 @@ public class VideogameDAO {
             sid.setInt(1,id);
             ResultSet rs = sid.executeQuery();
             if (rs.next()){
-                v= new Videogame(rs.getInt("id"),rs.getString("name"),rs.getString("genero"),rs.getDouble("precio"),rs.getInt("unidades"));
+                v= new Videogame(rs.getInt("id"),rs.getString("name"),rs.getString("genero"),rs.getDouble("precio"),rs.getInt("unidades"),rs.getInt("id_desarrollador"));
             }
         }
         catch (SQLException e){
@@ -165,5 +165,23 @@ public class VideogameDAO {
         catch (Exception e){
             System.err.println("Error:"+e.getMessage());
         }
+    }
+
+    private static List<Videogame> getByDeveloper_ID(int i){
+        String buscarDesa = "SELECT * FROM Videogames WHERE id_desarrollador = ?";
+        List<Videogame> sD = new ArrayList<>();
+        try(Connection conn=DBConnection.getConnection();PreparedStatement bs = conn.prepareStatement(buscarDesa)){
+        bs.setInt(1,i);
+        ResultSet rs = bs.executeQuery();
+
+        while(rs.next()){
+            Videogame v = new Videogame(rs.getInt("id"),rs.getString("name"),rs.getString("genero"),rs.getDouble("precio"),rs.getInt("unidades"),rs.getInt("id_desarrollador"));
+            sD.add(v);
+        }
+        }
+        catch (Exception e){
+            System.err.println("Error:"+e.getMessage());
+        }
+        return sD;
     }
 }

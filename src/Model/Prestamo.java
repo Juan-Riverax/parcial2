@@ -39,6 +39,10 @@ public class Prestamo {
     public Timestamp getFechaPrestamo() {
         return fechaPrestamo;
     }
+
+    public int getId_videogame(){
+        return id_videogame;
+    }
     @Override
     public String toString(){
         return "|   "+id+"  |   "+id_videogame+"    |   "+cliente+"  |   "+fechaPrestamo+"  |";
