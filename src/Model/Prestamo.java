@@ -15,6 +15,12 @@ public class Prestamo {
         this.fechaPrestamo=fechaPrestamo;
     }
 
+    public Prestamo (String pais, String name){
+        this.videogame=videogame;
+        this.cliente=cliente;
+        this.fechaPrestamo=fechaPrestamo;
+    }
+
     public int getId() {
         return id;
     }

@@ -11,6 +11,11 @@ public class Desarrollador {
         this.pais=pais;
     }
 
+    public Desarrollador (String name, String pais){
+        this.name=name;
+        this.pais=pais;
+    }
+
     public int getId(){
         return id;
     }

@@ -15,6 +15,13 @@ public class Videogame {
         this.unidades=unidades;
     }
 
+    public Videogame (String name, Genero genero,double precio, int unidades){
+        this.name=name;
+        this.genero=genero;
+        this.precio=precio;
+        this.unidades=unidades;
+    }
+
     public int getId(){
         return id;
     }
