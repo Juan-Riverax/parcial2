@@ -22,4 +22,8 @@ public class Desarrollador {
     public String getPais() {
         return pais;
     }
+    @Override
+    public String toString(){
+        return "|   "+id+"  |   "+name+"    |   "+pais+"  |";
+    }
 }

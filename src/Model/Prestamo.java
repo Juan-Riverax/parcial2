@@ -30,5 +30,8 @@ public class Prestamo {
     public Timestamp getFechaPrestamo() {
         return fechaPrestamo;
     }
-
+    @Override
+    public String toString(){
+        return "|   "+id+"  |   "+videogame+"    |   "+cliente+"  |   "+fechaPrestamo+"  |";
+    }
 }

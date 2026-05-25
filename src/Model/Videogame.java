@@ -34,5 +34,8 @@ public class Videogame {
     public int getUnidades() {
         return unidades;
     }
-
+@Override
+    public String toString(){
+        return "|   "+id+"  |   "+name+"    |   "+genero+"  |   "+precio+"  |   "+unidades+"    |";
+}
 }
