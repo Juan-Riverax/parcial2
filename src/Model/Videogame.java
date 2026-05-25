@@ -22,6 +22,9 @@ public class Videogame {
         this.unidades=unidades;
     }
 
+    public Videogame(int id, String name, String genero, double precio, int unidades) {
+    }
+
     public int getId(){
         return id;
     }
@@ -30,10 +33,10 @@ public class Videogame {
         return name;
     }
 
-    public Genero getGenero(){
-        return genero;
-    }
 
+    public String getGeneroS(){
+        return String.valueOf(genero);
+    }
     public double getPrecio(){
         return precio;
     }

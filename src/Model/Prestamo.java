@@ -8,17 +8,16 @@ public class Prestamo {
     private String cliente;
     private Timestamp fechaPrestamo;
 
-    public Prestamo (int id, String pais, String name){
+    public Prestamo (int id, Videogame videogame, String cliente){
         this.id=id;
         this.videogame=videogame;
         this.cliente=cliente;
         this.fechaPrestamo=fechaPrestamo;
     }
 
-    public Prestamo (String pais, String name){
+    public Prestamo (Videogame videogame, String cliente){
         this.videogame=videogame;
         this.cliente=cliente;
-        this.fechaPrestamo=fechaPrestamo;
     }
 
     public int getId() {
