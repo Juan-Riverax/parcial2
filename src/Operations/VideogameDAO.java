@@ -135,8 +135,8 @@ public class VideogameDAO {
             alq.setInt(1,u);
             alq.setInt(2,i);
             alq.executeUpdate();
-            Videogame Videogame = rs.getString(String.valueOf(("name"));
-            Prestamo prs= new Prestamo(Videogame,cliente);
+            int x = rs.getInt("id");
+            Prestamo prs= new Prestamo(x,cliente);
             PrestamoDAO.agregarPers(prs);
             System.out.println("Accion realizada con exito :D!");
         }

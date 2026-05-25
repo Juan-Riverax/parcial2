@@ -4,19 +4,23 @@ import java.sql.Timestamp;
 
 public class Prestamo {
     private int id;
-    private Videogame videogame;
+    private int id_videogame;
     private String cliente;
     private Timestamp fechaPrestamo;
 
-    public Prestamo (int id, Videogame videogame, String cliente){
+    public Prestamo(){
+
+    }
+
+    public Prestamo (int id, int id_videogame, String cliente){
         this.id=id;
-        this.videogame=videogame;
+        this.id_videogame=Videogame.getId();
         this.cliente=cliente;
         this.fechaPrestamo=fechaPrestamo;
     }
 
-    public Prestamo (Videogame videogame, String cliente){
-        this.videogame=videogame;
+    public Prestamo (int id_videogame, String cliente){
+        this.id_videogame=Videogame.getId();
         this.cliente=cliente;
     }
 
@@ -24,8 +28,8 @@ public class Prestamo {
         return id;
     }
 
-    public Videogame getVideogame() {
-        return videogame;
+    public int getVideogame() {
+        return id_videogame;
     }
 
     public String getCliente() {
@@ -37,6 +41,6 @@ public class Prestamo {
     }
     @Override
     public String toString(){
-        return "|   "+id+"  |   "+videogame+"    |   "+cliente+"  |   "+fechaPrestamo+"  |";
+        return "|   "+id+"  |   "+id_videogame+"    |   "+cliente+"  |   "+fechaPrestamo+"  |";
     }
 }

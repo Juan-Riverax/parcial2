@@ -1,7 +1,7 @@
 package Model;
 
 public class Videogame {
-    private int id;
+    private static int id;
     private String name;
     private Genero genero;
     private double precio;
@@ -25,7 +25,7 @@ public class Videogame {
     public Videogame(int id, String name, String genero, double precio, int unidades) {
     }
 
-    public int getId(){
+    public static int getId(){
         return id;
     }
 
