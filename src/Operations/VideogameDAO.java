@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VideogameDAO {
-    public static List<Videogame> getAllVideogames(){
+    public static List<Videogame> getAllVideogames(){ //esto es para que me los muestre todos con todos los datos
         List<Videogame> catalog = new ArrayList<>();
 
         String show_catalog="SELECT * FROM Videogames ORDER BY id ASC";
@@ -31,7 +31,7 @@ public class VideogameDAO {
         return catalog;
     }
 
-    public static List<Videogame> getByName(String s){
+    public static List<Videogame> getByName(String s){ // esto es para buscarlo por nombre
         List<Videogame> name = new ArrayList<>();
 
         String show_name="SELECT * FROM Videogames WHERE name ILIKE ? ORDER BY id ASC";
@@ -53,7 +53,7 @@ public class VideogameDAO {
     return name;
     }
 
-    private static List<Videogame> getByGenre(String s){
+    public static List<Videogame> getByGenre(String s){// esto es pa buscarlo por genero
 
         List<Videogame> genero = new ArrayList<>();
 
@@ -76,7 +76,7 @@ public class VideogameDAO {
         return genero;
     }
 
-    private static Videogame getById(int id){
+    public static Videogame getById(int id){// esto es pa buscarlo por id del juego
         String bid = "SELECT * FROM Videogames WHERE id=?";
 
         Videogame v = null;
@@ -87,6 +87,9 @@ public class VideogameDAO {
             if (rs.next()){
                 v= new Videogame(rs.getInt("id"),rs.getString("name"),rs.getString("genero"),rs.getDouble("precio"),rs.getInt("unidades"),rs.getInt("id_desarrollador"));
             }
+            else{
+                System.out.println("Error: No existe un videojuego con ese id.");
+            }
         }
         catch (SQLException e){
             System.err.println("Error: "+e.getMessage());
@@ -94,15 +97,15 @@ public class VideogameDAO {
         return v;
     }
 
-    private static void insertVideogame(Videogame v){
-        String adicionar_jogo="INSERT INTO Videogame (name,genero,precio,unidades)";
+    public static void insertVideogame(Videogame v){//esto es pa meter un juego nuevo
+        String adicionar_jogo="INSERT INTO Videogame (name,genero,precio,unidades) VALUES (?,?,?,?)";
 
         try(Connection conn=DBConnection.getConnection();PreparedStatement ad = conn.prepareStatement(adicionar_jogo)){
             ad.setString(1,v.getName());
             ad.setString(2,v.getGeneroS());
             ad.setDouble(3,v.getPrecio());
             ad.setInt(4,v.getUnidades());
-            ad.executeQuery();
+            ad.executeUpdate();
 
             System.out.println("Añadido correctamente!");
         }
@@ -111,7 +114,7 @@ public class VideogameDAO {
         }
     }
 
-    private static void alquilarV(int i,String cliente){
+    public static void alquilarV(int i,String persona_alq){//esto es pa la alquilada de un juego
         String busca="SELECT * FROM Videogames WHERE id = ?";
         String alquilar="UPDATE Videogames set unidades=? WHERE id = ?";
 
@@ -121,6 +124,7 @@ public class VideogameDAO {
 
             if(!rs.next()){
                 System.out.println("No existe ningun juego con ese id");
+                return;
             }
 
             int u = rs.getInt("unidades");
@@ -135,8 +139,7 @@ public class VideogameDAO {
             alq.setInt(1,u);
             alq.setInt(2,i);
             alq.executeUpdate();
-            int x = rs.getInt("id");
-            Prestamo prs= new Prestamo(x,cliente);
+            Prestamo prs= new Prestamo(i,persona_alq);
             PrestamoDAO.agregarPers(prs);
             System.out.println("Accion realizada con exito :D!");
         }
@@ -145,7 +148,7 @@ public class VideogameDAO {
         }
     }
 
-    private static void agregarVideojuego(String v, int p){
+    public static void agregarVideojuego(String v, int p){//esto es pa que se agreguen unidades a un jueguito ya existente
         String subir ="UPDATE Videogames SET unidades=? WHERE name = ?";
         String buscar ="SELECT * FROM Videogames WHERE name = ?";
 
@@ -160,14 +163,14 @@ public class VideogameDAO {
                 sb.setString(2,v);
                 sb.executeUpdate();
             }
-            System.out.println("Accion realizada con exito! Unidades de"+v+"ahora son de:"+u);
+            System.out.println("Accion realizada con exito! Unidades de "+v+" ahora son de:"+u);
         }
         catch (Exception e){
             System.err.println("Error:"+e.getMessage());
         }
     }
 
-    private static List<Videogame> getByDeveloper_ID(int i){
+    public static List<Videogame> getByDeveloper_ID(int i){ //esto es pa que lo saquen por id del desarrollador
         String buscarDesa = "SELECT * FROM Videogames WHERE id_desarrollador = ?";
         List<Videogame> sD = new ArrayList<>();
         try(Connection conn=DBConnection.getConnection();PreparedStatement bs = conn.prepareStatement(buscarDesa)){

@@ -1,14 +1,15 @@
 package Model;
 
-public class Videogame {
-    private static int id;
+public class Videogame { //clase vidiojuego
+    private int id;
     private String name;
-    private Genero genero;
+    private String genero;
+    private Genero generoG;
     private double precio;
     private int unidades;
     private int id_desarrollador;
 
-    public Videogame (int id,String name, Genero genero,double precio, int unidades, int id_desarrollador) {
+    public Videogame (int id,String name, String genero,double precio, int unidades, int id_desarrollador) {
         this.id=id;
         this.name=name;
         this.genero=genero;
@@ -17,7 +18,7 @@ public class Videogame {
         this.id_desarrollador=id_desarrollador;
     }
 
-    public Videogame (String name, Genero genero,double precio, int unidades, int id_desarrollador) {
+    public Videogame (String name, String genero,double precio, int unidades, int id_desarrollador) {
         this.name=name;
         this.genero=genero;
         this.precio=precio;
@@ -25,10 +26,10 @@ public class Videogame {
         this.id_desarrollador=id_desarrollador;
     }
 
-    public Videogame(int id, String name, String genero, double precio, int unidades,int id_desarrollador) {
+    public Videogame( ){
     }
 
-    public static int getId(){
+    public int getId(){
         return id;
     }
 
@@ -50,7 +51,29 @@ public class Videogame {
     public int getId_desarrollador() {
         return id_desarrollador;
     }
-@Override
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setGeneroG(Genero generoG) {
+        this.generoG = generoG;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public void setUnidades(int unidades) {
+        this.unidades = unidades;
+    }
+
+
+    @Override
     public String toString(){
         return "|   "+id+"  |   "+name+"    |   "+genero+"  |   "+precio+"  |   "+unidades+"    |   "+id_desarrollador+"    |";
 }

@@ -5,46 +5,57 @@ import java.sql.Timestamp;
 public class Prestamo {
     private int id;
     private int id_videogame;
-    private String cliente;
-    private Timestamp fechaPrestamo;
+    private String persona_alq;
+    private Timestamp fecha;
 
     public Prestamo(){
 
     }
 
-    public Prestamo (int id, int id_videogame, String cliente){
+    public Prestamo (int id, int id_videogame, String persona_alq){
         this.id=id;
-        this.id_videogame=Videogame.getId();
-        this.cliente=cliente;
-        this.fechaPrestamo=fechaPrestamo;
+        this.id_videogame=id_videogame;
+        this.persona_alq=persona_alq;
+        this.fecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public Prestamo (int id_videogame, String cliente){
-        this.id_videogame=Videogame.getId();
-        this.cliente=cliente;
+    public Prestamo (int id_videogame, String persona_alq){
+        this.id_videogame=id_videogame;
+        this.persona_alq=persona_alq;
+        this.fecha = new Timestamp(System.currentTimeMillis());
     }
 
     public int getId() {
         return id;
     }
 
-    public int getVideogame() {
+    public Prestamo (int id, String persona_alq, Timestamp fecha, int id_videogame){
+        this.id=id;
+        this.id_videogame=id_videogame;
+        this.persona_alq=persona_alq;
+        this.fecha = fecha;
+    }
+
+    public int getIdVideogame() {
+
         return id_videogame;
     }
 
-    public String getCliente() {
-        return cliente;
+    public String getPersonaAlq() {
+        return persona_alq;
     }
 
     public Timestamp getFechaPrestamo() {
-        return fechaPrestamo;
+        return fecha;
     }
 
-    public int getId_videogame(){
-        return id_videogame;
+
+
+    public void setPersona_alq(String persona_alq) {
+        this.persona_alq = persona_alq;
     }
     @Override
     public String toString(){
-        return "|   "+id+"  |   "+id_videogame+"    |   "+cliente+"  |   "+fechaPrestamo+"  |";
+        return "|   "+id+"  |   "+fecha+"    |   "+persona_alq+"  |   "+id_videogame+"  |";
     }
 }
