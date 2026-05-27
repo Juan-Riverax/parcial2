@@ -11,22 +11,6 @@ public class Desarrollador {
         this.pais=pais;
     }
 
-    public Desarrollador (String name, String pais){
-        this.name=name;
-        this.pais=pais;
-    }
-
-    public int getId(){
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPais() {
-        return pais;
-    }
     @Override
     public String toString(){
         return "|   "+id+"  |   "+name+"    |   "+pais+"  |";

@@ -8,10 +8,6 @@ public class Prestamo {
     private String persona_alq;
     private Timestamp fecha;
 
-    public Prestamo(){
-
-    }
-
     public Prestamo (int id, String persona_alq, int id_videogame){
         this.id=id;
         this.id_videogame=id_videogame;
@@ -49,11 +45,6 @@ public class Prestamo {
         return fecha;
     }
 
-
-
-    public void setPersona_alq(String persona_alq) {
-        this.persona_alq = persona_alq;
-    }
     @Override
     public String toString(){
         return "|   "+id+"  |   "+fecha+"    |   "+persona_alq+"  |   "+id_videogame+"  |";

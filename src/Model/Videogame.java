@@ -18,21 +18,6 @@ public class Videogame { //clase vidiojuego
         this.id_desarrollador=id_desarrollador;
     }
 
-    public Videogame (String name, String genero,double precio, int unidades, int id_desarrollador) {
-        this.name=name;
-        this.genero=genero;
-        this.precio=precio;
-        this.unidades=unidades;
-        this.id_desarrollador=id_desarrollador;
-    }
-
-    public Videogame( ){
-    }
-
-    public int getId(){
-        return id;
-    }
-
     public String getName(){
         return name;
     }
@@ -52,25 +37,7 @@ public class Videogame { //clase vidiojuego
         return id_desarrollador;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setGeneroG(Genero generoG) {
-        this.generoG = generoG;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
-    public void setUnidades(int unidades) {
-        this.unidades = unidades;
-    }
 
 
     @Override

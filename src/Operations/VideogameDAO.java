@@ -1,6 +1,7 @@
 package Operations;
 
 import DB.DBConnection;
+import Model.Genero;
 import Model.Prestamo;
 import Model.Videogame;
 
@@ -53,14 +54,14 @@ public class VideogameDAO {
     return name;
     }
 
-    public static List<Videogame> getByGenre(String s){// esto es pa buscarlo por genero
+    public static List<Videogame> getByGenre(Genero s){// esto es pa buscarlo por genero
 
         List<Videogame> genero = new ArrayList<>();
 
         String show_genero="SELECT * FROM videogames WHERE genero ILIKE ? ORDER BY id ASC";
 
         try(Connection conn = DBConnection.getConnection(); PreparedStatement sg = conn.prepareStatement(show_genero)){
-            sg.setString(1,"%"+s+"%");
+            sg.setString(1,"%"+s.name()+"%");
             ResultSet rs = sg.executeQuery();
             while(rs.next()){
                 Videogame v = new Videogame(rs.getInt("id"),rs.getString("name"),rs.getString("genero"),rs.getDouble("precio"),rs.getInt("unidades"),rs.getInt("id_desarrollador"));
