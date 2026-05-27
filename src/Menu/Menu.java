@@ -1,5 +1,6 @@
 package Menu;
 import Model.Genero;
+import Model.Prestamo;
 import Model.Videogame;
 import Operations.PrestamoDAO;
 import Operations.VideogameDAO;
@@ -39,9 +40,16 @@ public class Menu {
                                             break;
                                         }
                                         case 2: {
-                                            System.out.println("Ingrese el nombre del juego que desea mirar.");
+                                            System.out.println("Ingrese el nombre del juego que desea mirar o ingrese 0 para regresar.");
                                             String s = sc.next();
-                                            VideogameDAO.getByName(s);
+                                            if (s.equals("0")) {
+                                                break;
+                                            }
+                                            List<Videogame> nm = VideogameDAO.getByName(s);
+                                            System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                            for(Videogame v : nm) {
+                                                System.out.println(v);
+                                            }
                                             break;
                                         }
                                         case 3: {
@@ -49,123 +57,239 @@ public class Menu {
                                             do {
                                                 System.out.println("Seleccione el genero de su interes.");
                                                 System.out.println("1).Accion.\n\n2).Fantasia.\n\n3).Shooter.\n\n4).Terror.\n\n5)Plataformas.\n\n6).Aventura.\n\n7).Carreras.\n\n8).Pelea.\n\n9).Deportes.\n\n10).RPG.\n\n11).Simulacion.\n\n12).Estrategia.\n\n13).Detectives.\n\n14).Realidad_Aumentada.\n\n15).Sandbox.\n\n16).Dungeon_Crawler.\n\n17).Cartas.\n\n18).Puzzle.\n\n19).Sigilo.\n\n20).SciFi.\n\n21).Musical.\n\n22).Regresar.\n\n");
-                                                r = sc.nextInt();
-                                                switch (r) {
-
+                                                if(sc.hasNextInt()) {
+                                                    r = sc.nextInt();
+                                                    switch (r) {
                                                     case 1: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.Accion;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 2: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.Fantasia;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 3: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.Shooter;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 4: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.Terror;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 5: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.Plataformas;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 6: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.Aventura;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 7: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.Carreras;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 8: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.Pelea;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 9: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.Deportes;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 10: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.RPG;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 11: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.Simulacion;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 12: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.Estrategia;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 13: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.Detectives;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 14: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.Realidad_Aumentada;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 15: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.Sandbox;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 16: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.Dungeon_Crawler;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 17: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.Cartas;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 18: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.Puzzle;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 19: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.Sigilo;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 20: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.SciFi;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 21: {
+                                                        sc.nextLine();
                                                         Genero g = Genero.Musical;
-                                                        VideogameDAO.getByGenre(g);
+                                                        List<Videogame> ge= VideogameDAO.getByGenre(g);
+                                                        System.out.println("|   id  |       Nombre      |   Genero  |   Precio  |   Unidades Disponibles    |   id Desarrollador    |");
+                                                        for (Videogame v : ge) {
+                                                            System.out.println(v);
+                                                        }
                                                         break;
                                                     }
                                                     case 22: {
+                                                        sc.nextLine();
                                                         System.out.println("Regresando...");
+                                                        break;
                                                     }
                                                     default: {
                                                         System.out.println("Opción inválida");
                                                     }
                                                 }
+                                                }
+                                                else{
+                                                    sc.nextLine();
+                                                    System.out.println("Eso no es un numerito.");
+                                                    break;
+                                                }
                                             } while (r != 22);
                                             break;
+                                        }
+                                        case 4:{
+                                            System.out.println("Regresando...");
                                         }
                                         default: {
                                             System.out.println("Opción inválida");
@@ -182,15 +306,15 @@ public class Menu {
                                     r = sc.nextInt();
                                     switch (r) {
                                         case 1: {// adiciona juego completo
-                                            VideogameDAO.insertVideogame();
+                                            //VideogameDAO.insertVideogame();
                                             break;
                                         }
                                         case 2: {// alquila juegardos
-                                            VideogameDAO.alquilarV();
+                                            //VideogameDAO.alquilarV();
                                             break;
                                         }
                                         case 3: {//agrega unidades
-                                            VideogameDAO.agregarVideojuego();
+                                            //VideogameDAO.agregarVideojuego();
                                             break;
                                         }
                                         case 4:{
@@ -228,19 +352,19 @@ public class Menu {
                                     n = sc.nextInt();
                                     switch (n) {
                                         case 1: {
-                                            PrestamoDAO.getAllPrestamos();
+                                            //PrestamoDAO.getAllPrestamos();
                                             break;
                                         }
                                         case 2: {
-                                            PrestamoDAO.getById();
+                                            //PrestamoDAO.getById();
                                             break;
                                         }
                                         case 3: {
-                                            PrestamoDAO.getByPers();
+                                            //PrestamoDAO.getByPers();
                                             break;
                                         }
                                         case 4: {
-                                            PrestamoDAO.getByVideogameId();
+                                            //PrestamoDAO.getByVideogameId();
                                             break;
                                         }
                                         default: {
@@ -251,7 +375,7 @@ public class Menu {
                                 break;
                             }
                             case 2: {
-                                PrestamoDAO.devolverV();
+                                //PrestamoDAO.devolverV();
                                 break;
                             }
                             case 3: {
