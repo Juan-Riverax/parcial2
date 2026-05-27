@@ -76,7 +76,7 @@ public class PrestamoDAO {
     public static void devolverV(int id){
         String buscar = "SELECT * FROM v_alquilados WHERE id=?";
         String salvate = "DELETE FROM v_alquilados WHERE id=?";
-        String juegodevuelto ="UPDATE Videogames SET unidades=unidades+1 WHERE id=?";
+        String juegodevuelto ="UPDATE videogames SET unidades=unidades+1 WHERE id=?";
 
         try(Connection conn = DBConnection.getConnection();PreparedStatement bs = conn.prepareStatement(buscar);PreparedStatement slvt = conn.prepareStatement(salvate);PreparedStatement jd = conn.prepareStatement(juegodevuelto)){
             bs.setInt(1,id);

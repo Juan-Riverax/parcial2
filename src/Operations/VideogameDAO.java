@@ -15,7 +15,7 @@ public class VideogameDAO {
     public static List<Videogame> getAllVideogames(){ //esto es para que me los muestre todos con todos los datos
         List<Videogame> catalog = new ArrayList<>();
 
-        String show_catalog="SELECT * FROM Videogames ORDER BY id ASC";
+        String show_catalog="SELECT * FROM videogames ORDER BY id ASC";
 
         try(Connection conn = DBConnection.getConnection();
             PreparedStatement sc = conn.prepareStatement(show_catalog);
@@ -34,7 +34,7 @@ public class VideogameDAO {
     public static List<Videogame> getByName(String s){ // esto es para buscarlo por nombre
         List<Videogame> name = new ArrayList<>();
 
-        String show_name="SELECT * FROM Videogames WHERE name ILIKE ? ORDER BY id ASC";
+        String show_name="SELECT * FROM videogames WHERE name ILIKE ? ORDER BY id ASC";
 
         try (Connection conn = DBConnection.getConnection(); PreparedStatement sn = conn.prepareStatement(show_name)){
             sn.setString(1,"%"+s+"%");
@@ -57,7 +57,7 @@ public class VideogameDAO {
 
         List<Videogame> genero = new ArrayList<>();
 
-        String show_genero="SELECT * FROM Videogames WHERE genero ILIKE ? ORDER BY id ASC";
+        String show_genero="SELECT * FROM videogames WHERE genero ILIKE ? ORDER BY id ASC";
 
         try(Connection conn = DBConnection.getConnection(); PreparedStatement sg = conn.prepareStatement(show_genero)){
             sg.setString(1,"%"+s+"%");
@@ -77,7 +77,7 @@ public class VideogameDAO {
     }
 
     public static Videogame getById(int id){// esto es pa buscarlo por id del juego
-        String bid = "SELECT * FROM Videogames WHERE id=?";
+        String bid = "SELECT * FROM videogames WHERE id=?";
 
         Videogame v = null;
 
@@ -98,7 +98,7 @@ public class VideogameDAO {
     }
 
     public static void insertVideogame(Videogame v){//esto es pa meter un juego nuevo
-        String adicionar_jogo="INSERT INTO Videogame (name,genero,precio,unidades) VALUES (?,?,?,?)";
+        String adicionar_jogo="INSERT INTO videogame (name,genero,precio,unidades) VALUES (?,?,?,?)";
 
         try(Connection conn=DBConnection.getConnection();PreparedStatement ad = conn.prepareStatement(adicionar_jogo)){
             ad.setString(1,v.getName());
@@ -115,8 +115,8 @@ public class VideogameDAO {
     }
 
     public static void alquilarV(int i,String persona_alq){//esto es pa la alquilada de un juego
-        String busca="SELECT * FROM Videogames WHERE id = ?";
-        String alquilar="UPDATE Videogames set unidades=? WHERE id = ?";
+        String busca="SELECT * FROM videogames WHERE id = ?";
+        String alquilar="UPDATE videogames set unidades=? WHERE id = ?";
 
         try(Connection conn = DBConnection.getConnection();PreparedStatement bs = conn.prepareStatement(busca);PreparedStatement alq =conn.prepareStatement(alquilar)){
             bs.setInt(1,i);
@@ -149,8 +149,8 @@ public class VideogameDAO {
     }
 
     public static void agregarVideojuego(String v, int p){//esto es pa que se agreguen unidades a un jueguito ya existente
-        String subir ="UPDATE Videogames SET unidades=? WHERE name = ?";
-        String buscar ="SELECT * FROM Videogames WHERE name = ?";
+        String subir ="UPDATE videogames SET unidades=? WHERE name = ?";
+        String buscar ="SELECT * FROM videogames WHERE name = ?";
 
         try(Connection conn = DBConnection.getConnection();PreparedStatement bs=conn.prepareStatement(buscar);PreparedStatement sb = conn.prepareStatement(subir)){
             bs.setString(1,v);
@@ -171,7 +171,7 @@ public class VideogameDAO {
     }
 
     public static List<Videogame> getByDeveloper_ID(int i){ //esto es pa que lo saquen por id del desarrollador
-        String buscarDesa = "SELECT * FROM Videogames WHERE id_desarrollador = ?";
+        String buscarDesa = "SELECT * FROM videogames WHERE id_desarrollador = ?";
         List<Videogame> sD = new ArrayList<>();
         try(Connection conn=DBConnection.getConnection();PreparedStatement bs = conn.prepareStatement(buscarDesa)){
         bs.setInt(1,i);
