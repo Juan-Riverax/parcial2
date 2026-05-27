@@ -24,7 +24,11 @@ El proyecto implementa una arquitectura basada en:
 - Programación Orientada a Objetos (POO)
   
 >[!IMPORTANT]
->Para el uso de la tecnologia DotEnv se debe crear un archivo ".env" en el cual se van a guardar las credenciales de la base de datos.Ejemplo
+>Para el uso de la tecnologia DotEnv se debe crear un archivo ".env" en el cual se van a guardar las credenciales de la base de datos.\
+>Copia y pega esto en tu archivo reemplazando lo que esta despues del igual: \
+>URLSUPERSECRETA= Tu URL\
+>USUARIOSUPERSECRETO= Tu User\
+>KEYSUPERSECRETA= Tu Key
 ---
 
 ## Estructura del proyecto
