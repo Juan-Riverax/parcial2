@@ -47,7 +47,7 @@ public class VideogameDAO {
                 System.out.println("ERROR: NOMBRE NO ENCONTRADO :(");
             }
         }
-        catch (Exception e){
+        catch (SQLException e){
             System.err.println("Error:"+e.getMessage());
         }
     return name;
@@ -70,7 +70,7 @@ public class VideogameDAO {
                 System.out.println("Genero no registrado :(");
             }
         }
-        catch (Exception e){
+        catch (SQLException e){
             System.err.println("Error:"+e.getMessage());
         }
         return genero;
@@ -143,7 +143,7 @@ public class VideogameDAO {
             PrestamoDAO.agregarPers(prs);
             System.out.println("Accion realizada con exito :D!");
         }
-        catch (Exception e){
+        catch (SQLException e){
             System.err.println("Error: "+e.getMessage());
         }
     }
@@ -165,7 +165,7 @@ public class VideogameDAO {
             }
             System.out.println("Accion realizada con exito! Unidades de "+v+" ahora son de:"+u);
         }
-        catch (Exception e){
+        catch (SQLException e){
             System.err.println("Error:"+e.getMessage());
         }
     }
@@ -182,7 +182,7 @@ public class VideogameDAO {
             sD.add(v);
         }
         }
-        catch (Exception e){
+        catch (SQLException e){
             System.err.println("Error:"+e.getMessage());
         }
         return sD;

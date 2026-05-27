@@ -16,7 +16,7 @@ public class PrestamoDAO {
             aP.setTimestamp(3,prs.getFechaPrestamo());
             aP.executeUpdate();
         }
-        catch(Exception e){
+        catch(SQLException e){
             System.err.println("Error:"+e.getMessage());;
         }
     }
