@@ -12,7 +12,7 @@ public class Prestamo {
 
     }
 
-    public Prestamo (int id, int id_videogame, String persona_alq){
+    public Prestamo (int id, String persona_alq, int id_videogame){
         this.id=id;
         this.id_videogame=id_videogame;
         this.persona_alq=persona_alq;

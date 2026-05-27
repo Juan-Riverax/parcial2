@@ -23,13 +23,13 @@ public class PrestamoDAO {
 
     public static List<Prestamo> getByPers (String n){
         List<Prestamo> prsn = new ArrayList<>();
-        String buscarP="SELECT * FROM v_alquilados WHERE persona_alq=?";
+        String buscarP="SELECT * FROM v_alquilados WHERE persona_alq ILIKE ?";
 
         try(Connection conn = DBConnection.getConnection();PreparedStatement bp = conn.prepareStatement(buscarP)){
             bp.setString(1,"%"+n+"%");
             ResultSet rs= bp.executeQuery();
             while (rs.next()){
-                Prestamo p = new Prestamo(rs.getInt("id"), rs.getInt("id_videogame"),rs.getString("persona_alq"));
+                Prestamo p = new Prestamo(rs.getInt("id"),rs.getString("persona_alq"), rs.getInt("id_videogame"));
                 prsn.add(p);
             }
         }catch (SQLException e){
@@ -103,5 +103,26 @@ public class PrestamoDAO {
         catch (SQLException e){
             System.err.println("Error: "+e.getMessage());
         }
+    }
+
+    public static List<Prestamo> getByVideogameId(int id){
+        String porVideogameId="SELECT * FROM v_alquilados WHERE id_videogame=?";
+        List<Prestamo> PVD = new ArrayList<>();
+
+        try (Connection conn = DBConnection.getConnection();PreparedStatement pvd = conn.prepareStatement(porVideogameId)){
+            pvd.setInt(1,id);
+            ResultSet rs = pvd.executeQuery();
+                while(rs.next()){
+                    Prestamo m = new Prestamo(rs.getInt("id"),rs.getString("persona_alq"),rs.getInt("id_videogame"));
+                    PVD.add(m);
+                }
+                if (PVD.isEmpty()){
+                    System.out.println("Error: No hay unidades prestadas de este juego");
+                }
+        }
+        catch (SQLException e){
+            System.err.println("Error: "+e.getMessage());
+        }
+        return PVD;
     }
 }
