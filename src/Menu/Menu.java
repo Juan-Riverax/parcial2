@@ -594,7 +594,7 @@ public class Menu {
                                         case 2: {
                                             System.out.println("Escriba el id del prestamo:");
                                             if(sc.hasNextInt()) {
-                                                Prestamo p = PrestamoDAO.getById(sc.nextInt());
+                                                Prestamo p=PrestamoDAO.getById(sc.nextInt());
                                                 System.out.println("|   id  |       Persona      |   Fecha  |   id Videojuego  |");
                                                 System.out.println(p);
                                             }else{
