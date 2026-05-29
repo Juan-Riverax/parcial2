@@ -54,15 +54,15 @@ public class PrestamoDAO {
         return Lista;
     }
 
-    public static void getById(int d){
-        Prestamo ñ=null;
+    public static Prestamo getById(int d){
+        Prestamo p=null;
         String porId="SELECT * FROM v_alquilados WHERE id=?";
 
         try(Connection conn = DBConnection.getConnection();PreparedStatement pi = conn.prepareStatement(porId)){
             pi.setInt(1,d);
             ResultSet rs = pi.executeQuery();
             if (rs.next()){
-                Prestamo p= new Prestamo(rs.getInt("id"),rs.getString("persona_alq"),rs.getTimestamp("fecha"),rs.getInt("id_videogame"));
+                p= new Prestamo(rs.getInt("id"),rs.getString("persona_alq"),rs.getTimestamp("fecha"),rs.getInt("id_videogame"));
             }
             else{
                 System.out.println("Error: No existe un prestamo con ese id.");
@@ -71,6 +71,7 @@ public class PrestamoDAO {
         catch (SQLException e){
             System.err.println();
         }
+        return p;
     }
 
     public static void devolverV(int id){

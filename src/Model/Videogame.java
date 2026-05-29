@@ -18,6 +18,13 @@ public class Videogame { //clase vidiojuego
         this.id_desarrollador=id_desarrollador;
     }
 
+    public Videogame (String name, String genero,double precio, int unidades, int id_desarrollador) {
+        this.name=name;
+        this.genero=genero;
+        this.precio=precio;
+        this.unidades=unidades;
+        this.id_desarrollador=id_desarrollador;
+    }
     public String getName(){
         return name;
     }
