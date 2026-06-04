@@ -25,27 +25,23 @@ public class Videogame { //clase vidiojuego
         this.unidades=unidades;
         this.id_desarrollador=id_desarrollador;
     }
+
+    public int getId() {return id;}
     public String getName(){
         return name;
     }
-
-
     public String getGeneroS(){
         return String.valueOf(genero);
     }
     public double getPrecio(){
         return precio;
     }
-
     public int getUnidades() {
         return unidades;
     }
     public int getId_desarrollador() {
         return id_desarrollador;
     }
-
-
-
 
     @Override
     public String toString(){

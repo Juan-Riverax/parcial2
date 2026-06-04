@@ -1,0 +1,108 @@
+package GUI;
+
+import Model.Genero;
+import Model.Videogame;
+import Operations.VideogameDAO;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+
+public class VideogamesUI {
+    private JPanel panel1;
+    private JLabel lbTitulo;
+    private JLabel lbNombre;
+    private JLabel lbGenero;
+    private JTextField txtfldNombre;
+    private JComboBox<Genero> cmbbxGenero;
+    private JButton btnMostrarTodos;
+    private JButton btnBuscarNombre;
+    private JButton btnBuscarGenero;
+    private JButton btnAgregarJuego;
+    private JButton btnExportar;
+    private JTable tblVideojuegos;
+    private JButton buscarPorIDButton;
+    private List<Videogame> ultimaconsulta;
+
+    private void llenarcombo(){
+        for(Genero g: Genero.values()){
+            cmbbxGenero.addItem(g);
+        }
+    }
+
+    private void cargarTabla(List<Videogame> lista){
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        modelo.addColumn("ID");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Genero");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Unidades");
+        modelo.addColumn("ID_Desarrollador");
+
+        for (Videogame v:lista){
+            modelo.addRow(new Object[]{v.getId(),v.getName(),v.getGeneroS(),v.getPrecio(),v.getUnidades(),v.getId_desarrollador()});
+        }
+        tblVideojuegos.setModel(modelo);
+    }
+
+    public VideogamesUI(){
+        llenarcombo();
+        btnMostrarTodos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ultimaconsulta=VideogameDAO.getAllVideogames();
+                cargarTabla(ultimaconsulta);
+            }
+        });
+        btnBuscarNombre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            String nombre = txtfldNombre.getText();
+
+            ultimaconsulta= VideogameDAO.getByName(nombre);
+            cargarTabla(ultimaconsulta);
+            }
+        });
+        btnBuscarGenero.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            Genero ge = (Genero) cmbbxGenero.getSelectedItem();
+            ultimaconsulta= VideogameDAO.getByGenre(ge);
+            cargarTabla(ultimaconsulta);
+            }
+        });
+        btnAgregarJuego.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            String nombre = JOptionPane.showInputDialog("Nombre del juego:");
+            String genero = JOptionPane.showInputDialog("Genero del juego:");
+            double precio = Double.parseDouble(JOptionPane.showInputDialog("Precio del juego:"));
+            int unidades = Integer.parseInt(JOptionPane.showInputDialog("Unidades del juego:"));
+            int idDesarrollador = Integer.parseInt(JOptionPane.showInputDialog("ID del Desarrollador del juego:"));
+
+            Videogame v = new Videogame(nombre,genero,precio,unidades,idDesarrollador);
+
+            VideogameDAO.insertVideogame(v);
+            }
+        });
+        btnExportar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        buscarPorIDButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+    }
+    public JPanel getPanel(){
+        return panel1;
+    }
+}
+
