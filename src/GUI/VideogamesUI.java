@@ -98,10 +98,19 @@ public class VideogamesUI {
             Genero genero = (Genero) JOptionPane.showInputDialog(null, "Seleccione el género", "Género", JOptionPane.QUESTION_MESSAGE, null, Genero.values(), Genero.values()[0]);
             double precio = Double.parseDouble(JOptionPane.showInputDialog("Precio del juego:"));
             int unidades = Integer.parseInt(JOptionPane.showInputDialog("Unidades del juego:"));
-            int idDesarrollador = Integer.parseInt(JOptionPane.showInputDialog("ID del Desarrollador del juego:"));
+            String[] desarrolladores = {"1 - FromSoftware", "2 - Nintendo", "3 - Rockstar Games", "4 - Mojang", "5 - CD Projekt Red", "6 - Ubisoft", "7 - Valve", "8 - Capcom", "9 - Square Enix", "10 - Bethesda", "11 - Epic Games", "12 - Blizzard Entertainment", "13 - SEGA", "14 - Bandai Namco", "15 - Electronic Arts", "16 - Konami", "17 - Respawn Entertainment", "18 - Naughty Dog", "19 - Santa Monica Studio", "20 - Insomniac Games"};
+
+            String seleccionado = (String) JOptionPane.showInputDialog(panel1, "Seleccione el desarrollador:", "Desarrolladores", JOptionPane.QUESTION_MESSAGE, null, desarrolladores, desarrolladores[0]);
+
+                if (seleccionado == null) {
+                    return;
+                }
+
+                int idDesarrollador = Integer.parseInt(seleccionado.split(" - ")[0]);
 
             Videogame v = new Videogame(nombre,genero,precio,unidades,idDesarrollador);
 
+                System.out.println(idDesarrollador);
                 VideogameDAO.insertVideogame(v);
                 ultimaconsulta = VideogameDAO.getAllVideogames();
                 cargarTabla(ultimaconsulta);

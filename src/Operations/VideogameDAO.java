@@ -99,7 +99,7 @@ public class VideogameDAO {
     }
 
     public static void insertVideogame(Videogame v){//esto es pa meter un juego nuevo
-        String adicionar_jogo="INSERT INTO videogame (name,genero,precio,unidades) VALUES (?,?,?,?)";
+        String adicionar_jogo="INSERT INTO videogames (name,genero,precio,unidades) VALUES (?,?,?,?)";
 
         try(Connection conn=DBConnection.getConnection();PreparedStatement ad = conn.prepareStatement(adicionar_jogo)){
             ad.setString(1,v.getName());
