@@ -12,7 +12,7 @@ public class Videogame { //clase vidiojuego
     public Videogame (int id,String name, String genero,double precio, int unidades, int id_desarrollador) {
         this.id=id;
         this.name=name;
-        this.generoG=Genero.valueOf(genero);
+        this.generoG = Genero.valueOf(genero.replace(" ", "_"));
         this.precio=precio;
         this.unidades=unidades;
         this.id_desarrollador=id_desarrollador;
@@ -31,7 +31,7 @@ public class Videogame { //clase vidiojuego
         return name;
     }
     public String getGeneroS(){
-        return String.valueOf(genero);
+        return generoG.toString();
     }
     public double getPrecio(){
         return precio;

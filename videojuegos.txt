@@ -1,0 +1,2 @@
+ID,Nombre,Género,Precio,Unidades,ID_Desarrollador
+30,Red Dead Redemption,Aventura,119000.0,4,3
