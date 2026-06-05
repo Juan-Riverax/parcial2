@@ -95,14 +95,17 @@ public class VideogamesUI {
             @Override
             public void actionPerformed(ActionEvent e) {
             String nombre = JOptionPane.showInputDialog("Nombre del juego:");
-            String genero = JOptionPane.showInputDialog("Genero del juego:");
+            Genero genero = (Genero) JOptionPane.showInputDialog(null, "Seleccione el género", "Género", JOptionPane.QUESTION_MESSAGE, null, Genero.values(), Genero.values()[0]);
             double precio = Double.parseDouble(JOptionPane.showInputDialog("Precio del juego:"));
             int unidades = Integer.parseInt(JOptionPane.showInputDialog("Unidades del juego:"));
             int idDesarrollador = Integer.parseInt(JOptionPane.showInputDialog("ID del Desarrollador del juego:"));
 
             Videogame v = new Videogame(nombre,genero,precio,unidades,idDesarrollador);
 
-            VideogameDAO.insertVideogame(v);
+                VideogameDAO.insertVideogame(v);
+                ultimaconsulta = VideogameDAO.getAllVideogames();
+                cargarTabla(ultimaconsulta);
+                JOptionPane.showMessageDialog(panel1, "Juego agregado correctamente");
             }
         });
         btnExportar.addActionListener(new ActionListener() {
@@ -129,9 +132,13 @@ public class VideogamesUI {
         btnId.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            int id = Integer.parseInt(txtfldID.getText());
-            Videogame ultimaconsulta = VideogameDAO.getById(id);
-            cargarTabla(ultimaconsulta);
+                int id = Integer.parseInt(txtfldID.getText());
+
+                Videogame v = VideogameDAO.getById(id);
+
+                cargarTabla(v);
+
+                ultimaconsulta = List.of(v);
             }
         });
     }

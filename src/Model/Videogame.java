@@ -18,9 +18,9 @@ public class Videogame { //clase vidiojuego
         this.id_desarrollador=id_desarrollador;
     }
 
-    public Videogame (String name, String genero,double precio, int unidades, int id_desarrollador) {
+    public Videogame (String name, Genero generoG,double precio, int unidades, int id_desarrollador) {
         this.name=name;
-        this.genero=genero;
+        this.generoG=generoG;
         this.precio=precio;
         this.unidades=unidades;
         this.id_desarrollador=id_desarrollador;
